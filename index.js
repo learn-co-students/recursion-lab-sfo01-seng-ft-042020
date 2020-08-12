@@ -34,23 +34,7 @@ function isPalindrome(string) {
 }
 
 function addUpTo(nums, index) {
-  // [1,2,3,4, 6], 2
-  // [3,3,4, 6], 1
-  // [6, 4, 6], 0
-  //
-  if (index > 0) {
-    let sum = nums[0] + nums[1];
-    let remaining = nums.slice(2);
-    index = index - 1;
-    if (!remaining.length) {
-      return addUpTo([sum], index);
-    } else {
-      remaining = [sum, ...remaining];
-      return addUpTo(remaining, index);
-    }
-  } else {
-    return nums[0];
-  }
+  return index ? nums[index] + addUpTo(nums, --index) : nums[index];
 }
 
 function maxOf(nums) {
